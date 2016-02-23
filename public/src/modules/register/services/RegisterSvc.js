@@ -1,12 +1,12 @@
 define(['angular'], function(angular) {
 
-  var LoginSvc = function($uibModal) {
+  var RegisterSvc = function($uibModal) {
 
-    var _openLogin = function() {
+    var _openRegister = function() {
       var modalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'src/modules/login/views/login.html',
-        controller: 'LoginCtrl',
+        templateUrl: 'src/modules/register/views/register.html',
+        controller: 'RegisterCtrl',
         controllerAs: 'vm',
         size: 'sm',
         resolve: {
@@ -18,11 +18,11 @@ define(['angular'], function(angular) {
     };
 
     return {
-      openLogin: _openLogin
+      openRegister: _openRegister
     };
   };
 
-  LoginSvc.inject = ['$uibModal'];
+  RegisterSvc.inject = ['$uibModal'];
 
-  return LoginSvc;
+  return RegisterSvc;
 });

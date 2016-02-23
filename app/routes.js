@@ -1,5 +1,7 @@
 var Item = require('./models/item');
-
+var express = require('express');
+var passport = require('passport');
+var User = require('./models/user');
 
 module.exports = function(app){
 
@@ -49,6 +51,40 @@ module.exports = function(app){
           });
       });
   });
+
+app.post('/user/register', function(req, res) {
+  console.log('entrou aqui');
+  User.register(new User({ username: req.body.username }), req.body.password, function(err, account) {
+    if (err) {
+      console.log('deu erro');
+      return res.status(500).json({err: err})
+    }
+    passport.authenticate('local')(req, res, function () {
+      console.log('deu boa');
+      return res.status(200).json({status: 'Registration successful!'})
+    });
+  });
+});
+
+app.post('/user/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err) }
+    if (!user) {
+      return res.status(401).json({err: info})
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return res.status(500).json({err: 'Could not log in user'})
+      }
+      res.status(200).json({status: 'Login successful!'})
+    });
+  })(req, res, next);
+});
+
+app.get('/user/logout', function(req, res) {
+  req.logout();
+  res.status(200).json({status: 'Bye!'})
+});
 
   // application -------------------------------------------------------------
   app.get('*', function(req, res) {

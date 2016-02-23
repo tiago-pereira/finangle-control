@@ -1,22 +1,16 @@
 <header>
-  <h1 class="float-l">
-    <a href="#">FINANGLE CONTROL</a>
-  </h1>
-  <input type="checkbox" id="control-nav" />
-  <label for="control-nav" class="control-nav"></label>
-  <label for="control-nav" class="control-nav-close"></label>
-  <nav class="float-r">
-    <ul class="list-auto">
-      <li>
-        <a ng-click="vm.openLogin()" title="Login">Login</a>
-      </li>
-      <li>
-        <a title="Cadastrar">Cadastrar</a>
-      </li>
-      <li>
-        <a href="#" title="Sobre">Sobre</a>
-      </li>
-      <li>
-    </ul>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Finangle Control</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#" ng-click="vm.openLogin()">Login</a></li>
+        <li><a href="#" ng-click="vm.openRegister()">Cadastrar</a></li>
+        <li><a href="#">Sobre</a></li>
+      </ul>
+    </div>
   </nav>
+
 </header>
