@@ -1,0 +1,22 @@
+{
+  "name": "testes",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/tiago-pereira/finangle-control",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "requirejs": "^2.1.22",
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "^0.2.18",
+    "angular-bootstrap": "^1.1.2"
+  }
+}
