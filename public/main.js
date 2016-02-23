@@ -3,7 +3,7 @@ requirejs.config({
   paths: {
     'angular': 'vendor/angular/angular',
     'angular-ui-router': 'vendor/angular-ui-router/release/angular-ui-router',
-    'angular-bootstrap': 'vendor/angular-bootstrap/ui-bootstrap',
+    'angular-bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls',
     'bootstrap': 'vendor/bootstrap/dist/js/bootstrap',
     'jquery': 'vendor/jquery/dist/jquery'
   },

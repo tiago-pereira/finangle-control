@@ -1,9 +1,7 @@
 define([
-  'angular',
-  'src/modules/shared/services/LoginSvc'],
-  function (angular, LoginSvc) {
+  'angular'],
+  function (angular) {
 
-  angular.module('finangle.shared', [])
-  .service('LoginSvc', LoginSvc);
+  angular.module('finangle.shared', []);
 
 });

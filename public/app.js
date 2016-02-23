@@ -1,30 +1,24 @@
 define([
-
   'angular',
   'src/config/namespace',
-  'src/modules/index/IndexCtrl',
+  'src/modules/shared/shared.module',
+  'src/modules/index/module',
+  'src/modules/login/module',
   'src/config/vendor'
-], function (angular, namespace, IndexCtrl) {
+], function(angular, namespace) {
 
   'use strict';
 
   var app = angular.module(namespace, [
-    'finangle.vendor'
+    'finangle.shared',
+    'finangle.vendor',
+    'finangle.modules.login',
+    'finangle.modules.index'
   ]);
-  app.controller('IndexCtrl', IndexCtrl);
 
   app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-
       $urlRouterProvider.otherwise('/index');
-
-      $stateProvider
-      .state('index', {
-        url: '/index',
-        templateUrl: 'src/modules/index/view.html',
-        controller: 'IndexCtrl',
-        controllerAs: 'vm'
-      });
     }
   ]);
 
