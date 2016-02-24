@@ -5,22 +5,22 @@ define(['angular'], function(angular) {
 
     vm.cancel = function() {
       $uibModalInstance.dismiss('cancel');
-    }
+    };
 
-    vm.login = function () {
-
+    vm.login = function() {
+      console.log(vm.loginForm.username, vm.loginForm.password);
       vm.error = false;
       vm.disabled = true;
+
 
       AuthService.login(vm.loginForm.username, vm.loginForm.password)
         // handle success
         .then(function () {
-          $location.path('/');
-          vm.disabled = false;
-          vm.loginForm = {};
-        })
-        // handle error
-        .catch(function () {
+          console.log('logado');
+
+          $uibModalInstance.dismiss('cancel');
+        }, function(data){
+          console.log(data, 'catch');
           vm.error = true;
           vm.errorMessage = "Invalid username and/or password";
           vm.disabled = false;

@@ -5,9 +5,9 @@ define(['angular'], function(angular) {
 
     vm.cancel = function() {
       $uibModalInstance.dismiss('cancel');
-    }
+    };
 
-    vm.register = function () {
+    vm.register = function() {
       console.log('oi gsus', vm.loginForm.username, vm.loginForm.password);
       vm.error = false;
       vm.disabled = true;
