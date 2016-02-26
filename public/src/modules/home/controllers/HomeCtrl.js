@@ -4,6 +4,13 @@ define(['angular'], function(angular) {
     var vm = this;
 
 
+    vm.isOpen = false;
+      vm.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'right'
+      };
+
     vm.logout = function($event) {
       AuthService.logout()
       .then(function(){
