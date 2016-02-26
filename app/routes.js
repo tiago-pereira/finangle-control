@@ -17,8 +17,9 @@ module.exports = function(app){
       });
   });
 
-  app.post('/api/items', function(req, res) {
+  app.post('/user/add/item', function(req, res) {
       Item.create({
+          user: req.body.user,
           desc : req.body.desc,
           value: req.body.value
       }, function(err, todo) {
@@ -26,7 +27,7 @@ module.exports = function(app){
               res.send(err);
 
           // get and return all the todos after you create another
-          Item.find(function(err, todos) {
+          Item.find({'user': req.body.user}, function(err, todos) {
               if (err)
                   res.send(err)
               res.json(todos);
@@ -76,7 +77,7 @@ app.post('/user/login', function(req, res, next) {
       if (err) {
         return res.status(500).json({err: 'Could not log in user'})
       }
-      res.status(200).json({status: 'Login successful!'})
+      res.status(200).json({status: 'Login successful!', id: user._id})
     });
   })(req, res, next);
 });

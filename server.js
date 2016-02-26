@@ -34,6 +34,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+require('./app/models/item');
+
 require('./app/routes')(app);
 
  // listen (start app with node server.js) ======================================

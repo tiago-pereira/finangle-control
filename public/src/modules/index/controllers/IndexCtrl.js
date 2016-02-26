@@ -6,7 +6,6 @@ define(['angular'], function(angular) {
     vm.openLogin = function($event) {
       LoginSvc.openLogin($event)
       .then(function(result){
-        console.log(result);
         if (result === 'logado') {
           $state.go('home');
         }

@@ -1,12 +1,12 @@
 define([
   'angular',
   'src/config/namespace',
+  'src/config/vendor',
   'src/modules/shared/shared.module',
   'src/modules/index/module',
   'src/modules/home/module',
   'src/modules/login/module',
-  'src/modules/register/module',
-  'src/config/vendor'
+  'src/modules/register/module'
 ], function(angular, namespace) {
 
   'use strict';
@@ -45,7 +45,8 @@ define([
       $http.post('/user/login', {username: username, password: password})
         .success(function (data, status) {
           if(status === 200 && data.status){
-            user = true;
+            user = {id: data.id};
+
             deferred.resolve();
           } else {
             user = false;
