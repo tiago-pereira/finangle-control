@@ -1,28 +1,29 @@
 define(['angular'], function(angular) {
 
-  var RegisterSvc = function($uibModal) {
+  var RegisterSvc = function($uibModal, $mdMedia, $mdDialog) {
 
-    var _openRegister = function() {
-      var modalInstance = $uibModal.open({
-        animation: true,
-        templateUrl: 'src/modules/register/views/register.html',
+    var customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+    var _openRegister = function(ev) {
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && customFullscreen;
+
+      return $mdDialog.show({
         controller: 'RegisterCtrl',
         controllerAs: 'vm',
-        size: 'sm',
-        resolve: {
-          items: function () {
-            return ['oi','2'];
-          }
-        }
+        templateUrl: 'src/modules/register/views/register.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen
       });
-    };
+    }
 
     return {
       openRegister: _openRegister
     };
   };
 
-  RegisterSvc.inject = ['$uibModal'];
+  RegisterSvc.inject = ['$uibModal', '$mdMedia', '$mdDialog'];
 
   return RegisterSvc;
 });

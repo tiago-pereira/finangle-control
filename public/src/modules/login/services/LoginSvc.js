@@ -1,28 +1,29 @@
 define(['angular'], function(angular) {
 
-  var LoginSvc = function($uibModal) {
+  var LoginSvc = function($uibModal, $mdMedia, $mdDialog) {
 
-    var _openLogin = function() {
-      var modalInstance = $uibModal.open({
-        animation: true,
-        templateUrl: 'src/modules/login/views/login.html',
+    var customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+    var _openLogin = function(ev) {
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && customFullscreen;
+
+      return $mdDialog.show({
         controller: 'LoginCtrl',
         controllerAs: 'vm',
-        size: 'sm',
-        resolve: {
-          items: function () {
-            return ['oi','2'];
-          }
-        }
+        templateUrl: 'src/modules/login/views/login.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen
       });
-    };
+    }
 
     return {
       openLogin: _openLogin
     };
   };
 
-  LoginSvc.inject = ['$uibModal'];
+  LoginSvc.inject = ['$uibModal', '$mdMedia', '$mdDialog'];
 
   return LoginSvc;
 });

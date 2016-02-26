@@ -1,10 +1,10 @@
 define(['angular'], function(angular) {
 
-  var RegisterCtrl = function($uibModalInstance, AuthService) {
+  var RegisterCtrl = function(AuthService, $mdDialog) {
     var vm = this;
 
     vm.cancel = function() {
-      $uibModalInstance.dismiss('cancel');
+      $mdDialog.cancel();
     };
 
     vm.register = function() {
@@ -15,9 +15,9 @@ define(['angular'], function(angular) {
       AuthService.register(vm.loginForm.username, vm.loginForm.password)
         // handle success
         .then(function () {
-          console.log('lsalvooooooo');
+          console.log('registrado');
 
-          $uibModalInstance.dismiss('cancel');
+          $mdDialog.hide('registrado');
         }, function(data){
           console.log(data, 'catch');
           vm.error = true;
@@ -31,7 +31,7 @@ define(['angular'], function(angular) {
 
   };
 
-  RegisterCtrl.inject = ['$uibModalInstance', 'AuthService'];
+  RegisterCtrl.inject = ['AuthService', '$mdDialog'];
 
   return RegisterCtrl;
 });

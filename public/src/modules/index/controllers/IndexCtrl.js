@@ -1,19 +1,25 @@
 define(['angular'], function(angular) {
 
-  var IndexCtrl = function(LoginSvc, RegisterSvc) {
+  var IndexCtrl = function($state, LoginSvc, RegisterSvc) {
     var vm = this;
 
-    vm.openLogin = function() {
-      LoginSvc.openLogin();
+    vm.openLogin = function($event) {
+      LoginSvc.openLogin($event)
+      .then(function(result){
+        console.log(result);
+        if (result === 'logado') {
+          $state.go('home');
+        }
+      });
     };
 
-    vm.openRegister = function() {
-      RegisterSvc.openRegister();
+    vm.openRegister = function($event) {
+      RegisterSvc.openRegister($event);
     };
 
   };
 
-  IndexCtrl.inject = ['LoginSvc', 'RegisterSvc'];
+  IndexCtrl.inject = ['$state', 'LoginSvc', 'RegisterSvc'];
 
   return IndexCtrl;
 });

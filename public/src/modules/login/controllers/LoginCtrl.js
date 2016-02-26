@@ -1,24 +1,23 @@
 define(['angular'], function(angular) {
 
-  var LoginCtrl = function($uibModalInstance, AuthService) {
+  var LoginCtrl = function(AuthService, $mdDialog) {
     var vm = this;
 
     vm.cancel = function() {
-      $uibModalInstance.dismiss('cancel');
+      $mdDialog.cancel();
     };
 
     vm.login = function() {
-      console.log(vm.loginForm.username, vm.loginForm.password);
+      console.log(vm.form.username, vm.form.password);
       vm.error = false;
       vm.disabled = true;
 
 
-      AuthService.login(vm.loginForm.username, vm.loginForm.password)
+      AuthService.login(vm.form.username, vm.form.password)
         // handle success
         .then(function () {
-          console.log('logado');
-
-          $uibModalInstance.dismiss('cancel');
+          console.log('wut m8');
+          $mdDialog.hide('logado');
         }, function(data){
           console.log(data, 'catch');
           vm.error = true;
@@ -32,7 +31,7 @@ define(['angular'], function(angular) {
 
   };
 
-  LoginCtrl.inject = ['$uibModalInstance', 'AuthService'];
+  LoginCtrl.inject = ['AuthService', '$mdDialog'];
 
   return LoginCtrl;
 });

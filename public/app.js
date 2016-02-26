@@ -3,6 +3,7 @@ define([
   'src/config/namespace',
   'src/modules/shared/shared.module',
   'src/modules/index/module',
+  'src/modules/home/module',
   'src/modules/login/module',
   'src/modules/register/module',
   'src/config/vendor'
@@ -15,7 +16,8 @@ define([
     'finangle.vendor',
     'finangle.modules.login',
     'finangle.modules.register',
-    'finangle.modules.index'
+    'finangle.modules.index',
+    'finangle.modules.home'
   ]);
 
   app.config(['$stateProvider', '$urlRouterProvider',
