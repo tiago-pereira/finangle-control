@@ -3,13 +3,33 @@ define(function() {
   'use strict';
 
   var HomeConfig = function($stateProvider, $urlRouterProvider){//}, AuthService, $q, $state, $timeout) {
-    $stateProvider.state('home', {
+    $stateProvider
+    .state('home', {
       url: '/home',
       templateUrl: 'src/modules/home/views/index.html',
       controller: 'HomeCtrl',
       controllerAs: 'vm',
       resolve: { authenticate: authenticate }
+    })
+    .state('home.acoes', {
+      templateUrl: 'src/modules/acoes/views/index.html',
+      controller: 'AcoesCtrl',
+      controllerAs: 'vm',
+      resolve: { authenticate: authenticate }
+    })
+    .state('home.opcoes', {
+      templateUrl: 'src/modules/opcoes/views/index.html',
+      controller: 'OpcoesCtrl',
+      controllerAs: 'vm',
+      resolve: { authenticate: authenticate }
+    })
+    .state('home.financeiro', {
+      templateUrl: 'src/modules/financeiro/views/index.html',
+      controller: 'FinanceiroCtrl',
+      controllerAs: 'vm',
+      resolve: { authenticate: authenticate }
     });
+
 
     function authenticate(AuthService, $q, $state, $timeout) {
       if (AuthService.getUserStatus()) {

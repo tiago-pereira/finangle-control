@@ -1,0 +1,30 @@
+<md-dialog aria-label="Add"  ng-cloak>
+  <form name="userForm" ng-submit="vm.addItem()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Adicionar item</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Valor</label>
+          <input type="number" ng-model="vm.form.value">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Descrição</label>
+          <input type="text" ng-model="vm.form.desc">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button type="submit" class="md-primary">
+        Adicionar
+      </md-button>
+      <md-button ng-click="vm.cancel()">
+        Cancelar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

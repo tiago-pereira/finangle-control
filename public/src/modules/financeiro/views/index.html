@@ -1,0 +1,27 @@
+<div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Últimos lançamentos</span>
+          </md-card-title-text>
+          <md-button ng-click="vm.addItem($event)">
+            Novo
+          </md-button>
+        </md-card-title>
+        <md-card-content>
+
+        <md-list>
+          <md-list-item class="md-2-line" ng-repeat="item in vm.items">
+            <i class="list-icon fa fa-2x" ng-class="{'fa-minus': item.value < 0, 'fa-plus': item.value > 0}"></i>
+            <div class="md-list-item-text" layout="column">
+              <h3>{{ item.value | currency}}</h3>
+              <h4>{{ item.desc }}</h4>
+            </div>
+          </md-list-item>
+        </md-list>
+
+
+
+        </md-card-content>
+      </md-card>
+</div>

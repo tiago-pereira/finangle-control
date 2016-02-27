@@ -5,9 +5,10 @@ var User = require('./models/user');
 
 module.exports = function(app){
 
-  app.get('/api/items', function(req, res) {
+  app.post('/user/items', function(req, res) {
     // use mongoose to get all todos in the database
-      Item.find(function(err, todos) {
+    console.log(req.body.user);
+      Item.find({'user': req.body.user}, function(err, todos) {
 
           // if there is an error retrieving, send the error. nothing after res.send(err) will execute
           if (err)

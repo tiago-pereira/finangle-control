@@ -1,35 +1,48 @@
-<md-content>
-  <md-toolbar layout="row">
-    <div class="md-toolbar-tools">
-      <h2>
-        <span>Finangle Control</span>
-      </h2>
-      <span flex=""></span>
-
-      <md-button aria-label="Learn More" ng-click="vm.logout($event)">
-        Logout
-      </md-button>
-    </div>
-  </md-toolbar>
-
-  <md-fab-toolbar md-open="vm.demo.isOpen" count="vm.demo.count"
-                  md-direction="{{vm.demo.selectedDirection}}">
-    <md-fab-trigger class="align-with-text">
-      <md-button aria-label="menu" class="md-fab md-primary">
-         <md-icon md-svg-src="assets/img/icons/ic_menu.svg"></md-icon>
-      </md-button>
-    </md-fab-trigger>
-    <md-toolbar>
-      <md-fab-actions class="md-toolbar-tools">
-        <md-button aria-label="comment" class="md-icon-button" ng-click="vm.add($event)">
-          <span>Adicionar</span><!--<md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>-->
+<div layout="column" style="height: auto;" ng-cloak>
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Finangle-Control</h1>
+      </md-toolbar>
+      <md-content layout-padding ng-controller="LeftMenuCtrl">
+        <md-button ng-click="vm.close()" class="md-primary" hide-gt-md>
+          Close Sidenav Left
         </md-button>
-        <md-button aria-label="label" class="md-icon-button">
-          <span>Excluir</span><!--<md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>-->
-        </md-button>
-      </md-fab-actions>
-    </md-toolbar>
-  </md-fab-toolbar>
 
+        <md-list hide-md show-gt-md>
+          <md-subheader class="md-no-sticky">Painel do sucesso</md-subheader>
+          <md-list-item ng-click="loadItem('acoes')" class="md-2-line">
+            <div class="md-list-item-text">
+              <h3>Ações</h3>
+              <p>Gerenciar suas ações</p>
+            </div>
+          </md-list-item>
+          <md-list-item ng-click="loadItem('opcoes')" class="md-2-line">
+            <div class="md-list-item-text">
+              <h3>Opções</h3>
+              <p>Gerenciar suas opções</p>
+            </div>
+          </md-list-item>
+          <md-list-item ng-click="loadItem('financeiro')" class="md-2-line">
+              <div class="md-list-item-text">
+                <h3>Financeiro</h3>
+                <p>Gerenciar seus gastos</p>
+              </div>
+          </md-list-item>
+          <md-divider ></md-divider>
 
-</md-content>
+          <md-list-item ng-click="logout()" class="md-2-line">
+            <div class="md-list-item-text">
+              <h3>Logout</h3>
+              <p>Não me deixe :c</p>
+            </div>
+          </md-list-item>
+        </md-list>
+
+      </md-content>
+    </md-sidenav>
+    <md-content flex layout-padding>
+      <div ui-view></div>
+    </md-content>
+  </section>
+</div>

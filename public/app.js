@@ -26,6 +26,11 @@ define([
     }
   ]);
 
+  app.config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('teal');
+  });
+
 
   app.factory('AuthService', ['$q', '$timeout', '$http',
     function ($q, $timeout, $http) {
