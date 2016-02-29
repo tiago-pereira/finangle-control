@@ -16,8 +16,13 @@ define(['angular'], function(angular) {
       $http.post('/user/status', {user: AuthService.getUserStatus().id})
       .success(function (data, status) {
         console.log(data);
-        vm.carteira.total = data[0].balance;
-        console.log(data[0].balance);
+
+        if(data[0]){
+          vm.carteira.total = data[0].balance;
+        } else {
+          vm.carteira.total = 0;
+        }
+        
       })
       .error(function (data) {
         console.log('erro');
@@ -69,9 +74,9 @@ define(['angular'], function(angular) {
       handleItem($event, 'ADD').then(function(data){
         console.log(data);
         vm.items = data;
-      });;
 
-      updateBalance();
+        updateBalance();
+      });
     };
 
     vm.editItem = function($event, item){
@@ -79,6 +84,8 @@ define(['angular'], function(angular) {
         console.log(data);
         vm.items = data;
         vm.selectItem(vm.selectedItem.index, vm.items[vm.selectedItem.index]);
+
+        updateBalance();
       });;
     };
 
