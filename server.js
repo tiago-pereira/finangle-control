@@ -39,5 +39,5 @@ require('./app/models/item');
 require('./app/routes')(app);
 
  // listen (start app with node server.js) ======================================
- app.listen(8080);
- console.log("App listening on port 8080");
+ app.listen(process.env.PORT || 5000);
+ console.log("App listening on port 5000");
