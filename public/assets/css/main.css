@@ -2,3 +2,17 @@
   align-self: center;
   margin-right: 15px;
 }
+
+
+
+.list-item.selected {
+  background-color: #A8D1FF;
+}
+
+.red-foreground h3, .red-foreground h4{
+  color: #D9534F !important;
+}
+
+.green-foreground h3, .green-foreground h4{
+  color: #449D44 !important;
+}

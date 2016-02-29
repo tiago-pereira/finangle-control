@@ -2,12 +2,14 @@ var Item = require('./models/item');
 var express = require('express');
 var passport = require('passport');
 var User = require('./models/user');
+var mongoose = require('mongoose');
+
 
 module.exports = function(app){
 
   app.post('/user/items', function(req, res) {
     // use mongoose to get all todos in the database
-    console.log(req.body.user);
+
       Item.find({'user': req.body.user}, function(err, todos) {
 
           // if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -18,11 +20,32 @@ module.exports = function(app){
       });
   });
 
+  app.post('/user/edit/item', function(req, res) {
+
+    Item.findByIdAndUpdate(req.body.id,
+      {
+        $set: {
+          desc: req.body.desc,
+          value: req.body.value,
+          type: req.body.type
+        }
+    }, function(err, todo) {
+      // get and return all the todos after you create another
+      Item.find({'user': req.body.user}, function(err, todos) {
+          if (err)
+              res.send(err)
+          res.json(todos);
+      });
+    });
+
+  });
+
   app.post('/user/add/item', function(req, res) {
       Item.create({
           user: req.body.user,
           desc : req.body.desc,
-          value: req.body.value
+          value: req.body.value,
+          type: req.body.type
       }, function(err, todo) {
           if (err)
               res.send(err);
@@ -38,9 +61,9 @@ module.exports = function(app){
   });
 
   // delete a todo
-  app.delete('/api/items/:item_id', function(req, res) {
+  app.delete('/user/delete/item/:item_id', function(req, res) {
       Item.remove({
-          _id : req.params.todo_id
+          _id : req.params.item_id
       }, function(err, todo) {
           if (err)
               res.send(err);
@@ -81,6 +104,22 @@ app.post('/user/login', function(req, res, next) {
       res.status(200).json({status: 'Login successful!', id: user._id})
     });
   })(req, res, next);
+});
+
+app.post('/user/status', function(req, res){
+  console.log(req.body.user, 'oi');
+  Item.aggregate([
+        { $match: {
+            user: mongoose.Types.ObjectId(req.body.user)
+        }},
+        { $group: {
+            _id: null,
+            balance: { $sum: "$value"  }
+        }}
+    ], function(err, result){
+    console.log(err, result);
+    res.json(result);
+  });
 });
 
 app.get('/user/logout', function(req, res) {

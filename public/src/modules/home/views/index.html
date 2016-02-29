@@ -1,4 +1,16 @@
 <div layout="column" style="height: auto;" ng-cloak>
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="vm.toggleLeft()" aria-label="Settings" hide-gt-md>
+          <i class="fa fa-navicon fa-2x"></i>
+        </md-button>
+        <h2>
+          <span>Finangle control</span>
+        </h2>
+        <span flex></span>
+      </div>
+  </md-toolbar>
+
   <section layout="row" flex>
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
       <md-toolbar class="md-theme-indigo">
@@ -6,10 +18,10 @@
       </md-toolbar>
       <md-content layout-padding ng-controller="LeftMenuCtrl">
         <md-button ng-click="vm.close()" class="md-primary" hide-gt-md>
-          Close Sidenav Left
+          Fechar
         </md-button>
 
-        <md-list hide-md show-gt-md>
+        <md-list>
           <md-subheader class="md-no-sticky">Painel do sucesso</md-subheader>
           <md-list-item ng-click="loadItem('acoes')" class="md-2-line">
             <div class="md-list-item-text">

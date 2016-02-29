@@ -1,27 +1,48 @@
-<div flex-xs flex-gt-xs="50" layout="column">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Últimos lançamentos</span>
-          </md-card-title-text>
-          <md-button ng-click="vm.addItem($event)">
-            Novo
-          </md-button>
-        </md-card-title>
-        <md-card-content>
+<md-content layout-xs="column" layout="row">
+  <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Últimos lançamentos</span>
+            </md-card-title-text>
 
-        <md-list>
-          <md-list-item class="md-2-line" ng-repeat="item in vm.items">
-            <i class="list-icon fa fa-2x" ng-class="{'fa-minus': item.value < 0, 'fa-plus': item.value > 0}"></i>
-            <div class="md-list-item-text" layout="column">
-              <h3>{{ item.value | currency}}</h3>
-              <h4>{{ item.desc }}</h4>
-            </div>
-          </md-list-item>
-        </md-list>
+            <i ng-click="vm.editItem($event, vm.selectedItem.item)" ng-if="vm.selectedItem.item" class="list-icon fa fa-pencil-square-o fa-2x"></i>
+            <i ng-click="vm.deleteItem($event, vm.selectedItem.item)" ng-if="vm.selectedItem.item" class="list-icon fa fa-trash-o fa-2x"></i>
+            <i ng-click="vm.addItem($event)" class="list-icon fa fa-plus fa-2x"></i>
+          </md-card-title>
+          <md-card-content>
+
+          <md-list style="max-height: 500px; overflow: auto;">
+            <md-list-item class="md-2-line list-item" ng-class="{'selected': vm.isItemSelected($index)}"
+              ng-repeat="item in vm.items track by $index" ng-click="vm.selectItem($index, item)">
+              <div class="md-list-item-text" layout="column"
+              ng-class="{'red-foreground': item.type === 'debito', 'green-foreground': item.type === 'credito'}">
+                <h3>{{ item.value | currency}}</h3>
+                <h4>{{ item.desc }}</h4>
+              </div>
+            </md-list-item>
+          </md-list>
 
 
 
-        </md-card-content>
-      </md-card>
-</div>
+          </md-card-content>
+        </md-card>
+  </div>
+
+  <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Estatística</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            Situação financeira: {{vm.carteira.total | currency}}
+          </md-list>
+
+
+
+          </md-card-content>
+        </md-card>
+  </div>
+</md-content>

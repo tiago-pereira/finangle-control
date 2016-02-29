@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
 
     vm.isOpen = false;
       vm.demo = {
-        isOpen: false,
+        isOpen: true,
         count: 0,
         selectedDirection: 'right'
       };

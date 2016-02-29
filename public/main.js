@@ -3,7 +3,6 @@ requirejs.config({
   paths: {
     'angular': 'vendor/angular/angular',
     'angular-ui-router': 'vendor/angular-ui-router/release/angular-ui-router',
-    'angular-ui-router-statehelper': 'vendor/angular-ui-router.stateHelper/statehelper',
     'angular-bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls',
     'angular-aria': 'vendor/angular-aria/angular-aria',
     'angular-messages': 'vendor/angular-messages/angular-messages',
@@ -39,10 +38,6 @@ requirejs.config({
     },
     'angular-ui-router': {
       deps: ['angular']
-    },
-    'angular-ui-router-statehelper': {
-      exports: 'angular-ui-router-statehelper',
-      deps: ['angular', 'angular-ui-router']
     },
     'bootstrap': {
       deps: ['jquery']
