@@ -17,12 +17,7 @@
     <script data-main="main.js" src="vendor/requirejs/require.js"></script>
   </head>
 
-  <body>
-    <div class="page-container">
-      <div class="page-content-wrapper">
-        <div class="page-content" ui-view></div>
-      </div>
-    </div>
-
+  <body layout="column">
+    <div class="page-content" ui-view layout="column"></div>
   </body>
 </html>

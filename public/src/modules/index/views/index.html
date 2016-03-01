@@ -1,6 +1,6 @@
-<md-content>
-  <md-toolbar layout="row">
-    <div class="md-toolbar-tools">
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools is-shadow">
       <h2>
         <span>Finangle Control</span>
       </h2>
@@ -13,4 +13,26 @@
       </md-button>
     </div>
   </md-toolbar>
-</md-content>
+  <md-content flex>
+        <md-card >
+      <md-card-content>
+        <h2>Card de conteúdo</h2>
+        <p>Lorem ipsum dolor sit amet, an vel veritus maiorum deserunt, ad has odio insolens, an enim commodo necessitatibus mea. Etiam velit vim te, sea te justo aperiri. Summo quidam explicari an quo, nam no falli putant melius. Munere iuvaret lobortis pro eu, ex adhuc concludaturque vis. Est copiosae tincidunt pertinacia et, debet tritani qualisque cu eum, autem dicunt no eos. Mei in harum dissentiunt. Pertinax splendide et mel, sit elitr detracto at, integre mentitum sit ne.
+Mazim integre instructior ius eu. No qui vero minim, et mea solum imperdiet, no dico vidit mel. Ea vim eros malis, ea vel magna eripuit alterum, te falli accusata dissentiet pro. Ad tale summo vituperatoribus his, modo saepe integre mei ad. Noluisse sententiae interpretaris no quo.
+Recusabo argumentum ne eum, ea ius delectus voluptatum voluptatibus. Eam vitae consulatu ex, verear platonem at quo. Graecis antiopam scribentur ut nam. Ubique reprimique intellegam quo cu. Eum in putent suscipit dissentias, ex hinc ancillae eos.
+Pro ea mucius veritus gubergren, ubique mucius sed te, his no duis dicat dicta. Putent rationibus ut qui, invidunt appellantur eu nec. Malis praesent eam et. Usu no corrumpit contentiones, nec ex ubique persecuti.</p>
+
+        <md-checkbox ng-init="lotsOfCards = true" ng-model="lotsOfCards">Show a lot of cards?</md-checkbox>
+      </md-card-content>
+    </md-card>
+
+
+    <md-card ng-if="lotsOfCards" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10,11,12]">
+      <md-card-content>
+        <h2 ng-bind-template="Card {{::n}}"></h2>
+        <p>Conteudo</p
+      </md-card-content>
+    </md-card>
+
+  </md-content>
+</div>
