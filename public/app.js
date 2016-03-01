@@ -32,21 +32,19 @@ define([
   });
 
 
+  //move it to a folder called auth inside modules/shared? TODO
   app.factory('AuthService', ['$q', '$timeout', '$http',
     function ($q, $timeout, $http) {
     var user = null;
-    // return available functions for use in controllers]
 
+    // return user properies;
     function getUserStatus() {
       return user;
     }
 
     function login(username, password) {
-
-      // create a new instance of deferred
       var deferred = $q.defer();
 
-      // send a post request to the server
       $http.post('/user/login', {username: username, password: password})
         .success(function (data, status) {
           if(status === 200 && data.status){
