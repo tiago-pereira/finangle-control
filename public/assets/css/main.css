@@ -3,9 +3,6 @@
   margin-right: 15px;
 }
 
-body, md-content {
-  background-color: #C7C7C7;
-}
 
 .list-item.selected {
   background-color: #A8D1FF;

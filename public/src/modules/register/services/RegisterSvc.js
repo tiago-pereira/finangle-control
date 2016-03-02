@@ -2,7 +2,7 @@ define(['angular'], function(angular) {
 
   var RegisterSvc = function($uibModal, $mdMedia, $mdDialog) {
 
-    var customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+    var customFullscreen = $mdMedia('sm') || $mdMedia('sm');
 
     var _openRegister = function(ev) {
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && customFullscreen;

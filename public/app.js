@@ -6,7 +6,8 @@ define([
   'src/modules/index/module',
   'src/modules/home/module',
   'src/modules/login/module',
-  'src/modules/register/module'
+  'src/modules/register/module',
+  'src/components/all'
 ], function(angular, namespace) {
 
   'use strict';
@@ -17,7 +18,8 @@ define([
     'finangle.modules.login',
     'finangle.modules.register',
     'finangle.modules.index',
-    'finangle.modules.home'
+    'finangle.modules.home',
+    'finangle.components'
   ]);
 
   app.config(['$stateProvider', '$urlRouterProvider',
