@@ -1,4 +1,5 @@
 var Item = require('./models/item');
+var Stock = require('./models/stock');
 var express = require('express');
 var passport = require('passport');
 var User = require('./models/user');
@@ -8,15 +9,20 @@ var mongoose = require('mongoose');
 module.exports = function(app){
 
   app.post('/user/items', function(req, res) {
-    // use mongoose to get all todos in the database
-
       Item.find({'user': req.body.user}, function(err, todos) {
-
-          // if there is an error retrieving, send the error. nothing after res.send(err) will execute
           if (err)
               res.send(err)
 
-          res.json(todos); // return all todos in JSON format
+          res.json(todos);
+      });
+  });
+
+  app.post('/user/stocks', function(req, res) {
+      Stock.find({'user': req.body.user}, function(err, stocks) {
+          if (err)
+              res.send(err)
+
+          res.json(stocks);
       });
   });
 
@@ -37,6 +43,26 @@ module.exports = function(app){
           res.json(todos);
       });
     });
+
+  });
+
+  app.post('/user/add/stock', function(req, res) {
+      Stock.create({
+          user: req.body.user,
+          code : req.body.code,
+          quantity: req.body.quantity,
+          buyValue: req.body.buyValue,
+          buyDate: new Date()
+      }, function(err, stock) {
+          if (err)
+              res.send(err);
+
+          Stock.find({'user': req.body.user}, function(err, stocks) {
+              if (err)
+                  res.send(err)
+              res.json(stocks);
+          });
+      });
 
   });
 

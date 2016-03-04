@@ -1,0 +1,36 @@
+<md-dialog aria-label="Add" ng-cloak flex="40">
+  <form name="userForm" ng-submit="vm.addStock()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Adicionar ação</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Código</label>
+          <input type="text" ng-model="vm.form.code">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Preço</label>
+          <input type="number" step="0.01" ng-model="vm.form.buyValue">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Quantidade</label>
+          <input type="number" ng-model="vm.form.quantity">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button type="submit" class="md-primary">
+        Adicionar
+      </md-button>
+      <md-button ng-click="vm.cancel()">
+        Cancelar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

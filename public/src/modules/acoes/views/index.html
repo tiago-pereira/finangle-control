@@ -1,3 +1,50 @@
-<div layout="column" style="height: auto;" ng-cloak>
-  acoes controller
-</div>
+<md-content layout-xs="column" layout="row">
+  <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Carteira de ações</span>
+            </md-card-title-text>
+
+            <i ng-click="vm.showDetails($event, vm.selectedStock.stock)" ng-if="vm.selectedStock.stock" class="list-icon fa fa-map-o fa-2x"></i>
+            <i ng-click="vm.addStock($event)" class="list-icon fa fa-plus fa-2x"></i>
+            <i ng-click="vm.addStock($event)" class="list-icon fa fa-minus fa-2x"></i>
+          </md-card-title>
+          <md-card-content>
+
+          <md-list style="max-height: 500px; overflow: auto;">
+            <md-list-item class="md-2-line list-item" ng-class="{'selected': vm.isStockSelected($index)}"
+              ng-repeat="stock in vm.stocks track by $index" ng-click="vm.selectStock($index, stock)">
+              <div class="md-list-item-text" layout="column">
+                <h3>{{ stock.buyValue | currency}}</h3>
+                <h4> Quantidade: {{ stock.quantity | number}} - Total: {{ (stock.quantity * stock.buyValue) | currency }}</h4>
+              </div>
+              <div>
+                <h3>{{ stock.code }}</h3>
+              </div>
+            </md-list-item>
+          </md-list>
+
+
+
+          </md-card-content>
+        </md-card>
+  </div>
+
+  <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Estatística</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+
+          </md-list>
+
+
+
+          </md-card-content>
+        </md-card>
+  </div>
+</md-content>
